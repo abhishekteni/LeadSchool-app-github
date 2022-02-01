@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "name": "Virat Kohli",
+      "school": "Kendriya vidhyalaya",
+      "email": "ViratK@gmail.com",
+      "division": "18",
+      "id": 1
+    },
+    {
+      "name": "MsDHoni",
+      "school": "THALA",
+      "email": "thala@gmail.com",
+      "division": "12121",
+      "id": 2
+    },
+    {
+      "name": "Rohit",
+      "school": "hitman",
+      "email": "rohit@gmail.com",
+      "division": "5th",
+      "id": 3,
+      "date": "s"
+    },
+    {
+      "name": "s",
+      "username": "s",
+      "email": "s",
+      "date": "s",
+      "phone": "mario",
+      "division": "abhishek",
+      "id": 4,
+      "school": "s"
+    },
+    {
+      "name": "t",
+      "school": "t",
+      "email": "t",
+      "date": "t",
+      "division": "6th",
+      "id": 6
+    },
+    {
+      "name": "w",
+      "school": "w",
+      "email": "r",
+      "date": "t",
+      "division": "3rd",
+      "status": "2nd",
+      "id": 7
+    }
+  ]
+}
