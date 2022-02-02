@@ -7,8 +7,8 @@ import {
   makeStyles,
   Button,
 } from "@material-ui/core";
-// import { Pagination } from "@mui/material";
-import Pagination from "@material-ui/lab/Pagination";
+
+// import Pagination from "@material-ui/lab/Pagination";
 import XLSX from "xlsx";
 import React from "react";
 import { useState } from "react";
@@ -23,7 +23,8 @@ const useStyle = makeStyles({
   },
   thead: {
     "& > *": {
-      background: "black",
+      background: "rgba(17, 27, 75, 0.8)",
+
       color: "white",
       fontSize: "15px",
     },
@@ -113,7 +114,7 @@ const ViewStudent = () => {
           ))}
         </TableBody>
       </Table>
-      <Pagination count={student.length} color="primary" />
+      {/* <Pagination count={student.length} color="primary" /> */}
       <Button onClick={() => downloadExcel()}> Download to Excel</Button>
     </div>
   );

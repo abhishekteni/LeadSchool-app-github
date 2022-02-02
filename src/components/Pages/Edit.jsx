@@ -8,11 +8,14 @@ import {
   Input,
   Button,
   makeStyles,
+  FormLabel,
   Typography,
   Select,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
 } from "@material-ui/core";
 import { useEffect } from "react";
-// import "./Add.css";
 const useStyles = makeStyles({
   container: {
     width: "50%",
@@ -58,7 +61,7 @@ const Edit = () => {
   };
   return (
     <FormGroup className={classes.container}>
-      <Typography variant="h4">Add user</Typography>
+      <Typography variant="h4">Edit user</Typography>
       <FormControl>
         <InputLabel>Name</InputLabel>
         <Input onChange={(e) => onValueChange(e)} name="name" value={name} />
@@ -96,8 +99,17 @@ const Edit = () => {
         </Select>
       </FormControl>
       <FormControl>
-        <InputLabel>Status</InputLabel>
-        <Select
+        <FormLabel>Status</FormLabel>
+
+        <RadioGroup row onChange={(e) => onValueChange(e)} name="status">
+          <FormControlLabel value="active" control={<Radio />} label="Active" />
+          <FormControlLabel
+            value="Inactive"
+            control={<Radio />}
+            label="InActive"
+          />
+        </RadioGroup>
+        {/* <Select
           value={status}
           required
           onChange={(e) => onValueChange(e)}
@@ -105,14 +117,14 @@ const Edit = () => {
         >
           <option value="Active">Active</option>
           <option value="Inactive">InActive</option>
-        </Select>
+        </Select> */}
       </FormControl>
       <Button
         variant="contained"
         color="primary"
         onClick={() => editUserDetails()}
       >
-        Add user
+        Edit user
       </Button>
     </FormGroup>
   );

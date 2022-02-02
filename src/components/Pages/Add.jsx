@@ -2,15 +2,23 @@ import React, { useState } from "react";
 import { addusers } from "../../Services/api";
 import { useNavigate } from "react-router-dom";
 import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
+import {
   FormGroup,
   FormControl,
   InputLabel,
   Input,
   Button,
   makeStyles,
+  FormLabel,
   Typography,
   Select,
   RadioGroup,
+  FormControlLabel,
+  Radio,
 } from "@material-ui/core";
 // import "./Add.css";
 const useStyles = makeStyles({
@@ -27,7 +35,7 @@ const initialValues = {
   name: "",
   school: "",
   email: "",
-  date: "",
+  date: new Date(),
   division: "",
   status: "",
 };
@@ -37,6 +45,9 @@ const Add = () => {
   const { name, school, email, date, division, status } = user;
   const classes = useStyles();
   const navigate = useNavigate();
+  const convertToDefEventPara = (e) => {
+    setUser({ ...user, date: e });
+  };
   const onValueChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -45,16 +56,23 @@ const Add = () => {
     await addusers(user);
     navigate("/");
   };
+
   return (
     <FormGroup className={classes.container}>
       <Typography variant="h4">Add user</Typography>
       <FormControl>
         <InputLabel>Name</InputLabel>
-        <Input onChange={(e) => onValueChange(e)} name="name" value={name} />
+        <Input
+          require
+          onChange={(e) => onValueChange(e)}
+          name="name"
+          value={name}
+        />
       </FormControl>
       <FormControl>
         <InputLabel>school</InputLabel>
         <Input
+          require
           onChange={(e) => onValueChange(e)}
           name="school"
           value={school}
@@ -62,11 +80,31 @@ const Add = () => {
       </FormControl>
       <FormControl>
         <InputLabel>Email</InputLabel>
-        <Input onChange={(e) => onValueChange(e)} name="email" value={email} />
+        <Input
+          require
+          onChange={(e) => onValueChange(e)}
+          name="email"
+          value={email}
+        />
       </FormControl>
       <FormControl>
-        <InputLabel>Date</InputLabel>
-        <Input onChange={(e) => onValueChange(e)} name="date" value={date} />
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <KeyboardDatePicker
+            require
+            autoOk={true}
+            showTodayButton={true}
+            value={date}
+            onChange={convertToDefEventPara}
+            label="Date"
+            format="MM/dd/yyyy"
+            variant="inline"
+            disableToolbar
+            // onChange={(e) => convertToDefEventPara(e)}
+          ></KeyboardDatePicker>
+        </MuiPickersUtilsProvider>
+
+        {/* <InputLabel>Date</InputLabel>
+        <Input onChange={(e) => onValueChange(e)} name="date" value={date} /> */}
       </FormControl>
       <FormControl>
         <InputLabel>division</InputLabel>
@@ -75,6 +113,7 @@ const Add = () => {
           required
           onChange={(e) => onValueChange(e)}
           name="division"
+          require
         >
           <option value="1st">1</option>
           <option value="2nd">2</option>
@@ -85,8 +124,22 @@ const Add = () => {
         </Select>
       </FormControl>
       <FormControl>
-        <InputLabel>Status</InputLabel>
-        <Select
+        <FormLabel>Status</FormLabel>
+
+        <RadioGroup
+          row
+          onChange={(e) => onValueChange(e)}
+          name="status"
+          require
+        >
+          <FormControlLabel value="active" control={<Radio />} label="Active" />
+          <FormControlLabel
+            value="Inactive"
+            control={<Radio />}
+            label="InActive"
+          />
+        </RadioGroup>
+        {/* <Select
           value={status}
           required
           onChange={(e) => onValueChange(e)}
@@ -94,12 +147,13 @@ const Add = () => {
         >
           <option value="Active">Active</option>
           <option value="Inactive">InActive</option>
-        </Select>
+        </Select> */}
       </FormControl>
       <Button
         variant="contained"
         color="primary"
         onClick={() => addUserDetails()}
+        require
       >
         Add user
       </Button>
