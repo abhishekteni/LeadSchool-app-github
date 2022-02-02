@@ -4,15 +4,19 @@
       "name": "Virat Kohli",
       "school": "Kendriya vidhyalaya",
       "email": "ViratK@gmail.com",
-      "division": "18",
-      "id": 1
+      "division": "1st",
+      "id": 1,
+      "status": "active",
+      "date": "2021-02-01T18:30:00.000Z"
     },
     {
       "name": "MsDHoni",
       "school": "THALA",
       "email": "thala@gmail.com",
-      "division": "12121",
-      "id": 2
+      "division": "4th",
+      "id": 2,
+      "status": "active",
+      "date": "2022-02-06T08:20:00.000Z"
     },
     {
       "name": "Rohit",
@@ -20,25 +24,17 @@
       "email": "rohit@gmail.com",
       "division": "5th",
       "id": 3,
-      "date": "s"
+      "date": "2022-02-10T08:19:00.000Z",
+      "status": "active"
     },
     {
-      "name": "s",
-      "username": "s",
-      "email": "s",
-      "date": "s",
-      "phone": "mario",
-      "division": "abhishek",
-      "id": 4,
-      "school": "s"
-    },
-    {
-      "name": "t",
-      "school": "t",
-      "email": "t",
-      "date": "t",
-      "division": "6th",
-      "id": 6
+      "name": "KL Rahul",
+      "school": "King XL",
+      "email": "KlRahul@gmail.com",
+      "date": "2022-02-13T08:15:00.000Z",
+      "division": "3rd",
+      "status": "Inactive",
+      "id": 4
     }
   ]
 }

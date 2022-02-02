@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import { editusers, getusers } from "../../Services/api";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   FormGroup,
@@ -30,7 +35,7 @@ const initialValues = {
   name: "",
   school: "",
   email: "",
-  date: "",
+  date: new Date(),
   division: "",
   status: "",
 };
@@ -50,7 +55,9 @@ const Edit = () => {
     const response = await getusers(id);
     setUser(response.data);
   };
-
+  const convertToDefEventPara = (e) => {
+    setUser({ ...user, date: e });
+  };
   const onValueChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -79,8 +86,23 @@ const Edit = () => {
         <Input onChange={(e) => onValueChange(e)} name="email" value={email} />
       </FormControl>
       <FormControl>
-        <InputLabel>Date</InputLabel>
-        <Input onChange={(e) => onValueChange(e)} name="date" value={date} />
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <KeyboardDatePicker
+            require
+            autoOk={true}
+            showTodayButton={true}
+            value={date}
+            onChange={convertToDefEventPara}
+            label="Date"
+            format="MM/dd/yyyy"
+            variant="inline"
+            disableToolbar
+            // onChange={(e) => convertToDefEventPara(e)}
+          ></KeyboardDatePicker>
+        </MuiPickersUtilsProvider>
+
+        {/* <InputLabel>Date</InputLabel>
+        <Input onChange={(e) => onValueChange(e)} name="date" value={date} /> */}
       </FormControl>
       <FormControl>
         <InputLabel>division</InputLabel>
